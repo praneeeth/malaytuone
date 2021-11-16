@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+
+
+
+    <style>
+        body {
+            font-family: 'lato';
+        }
+
+        h5 {
+            margin: 20px 0px 20px 0px;
+            font-family: 'lato';
+
+        }
+
+        img {
+            vertical-align: middle;
+            max-width: 30%;
+            width: 30%;
+            max-height: 100%;
+            margin: 0%;
+            padding-right: 2px;
+            float: left;
+        }
+
+        button {
+            padding: 2px;
+            margin: 0.5% 1% 0% 1%;
+            width: 48%;
+            max-width: 48%;
+            height: 50px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 10px;
+            border: 2px solid steelblue;
+            -webkit-border-radius: 10px;
+            background-color: white;
+            font-family: 'lato';
+
+        }
+
+        button:hover {
+            -webkit-box-shadow: 100px 600px 500px #ccc;
+            box-shadow: 2px 6px 5px #ccc;
+            -moz-box-shadow: 100px 600px 100px #ccc;
+            border: 3px solid #385072;
+            -moz-border-radius: 10px;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .vertical-center {
+            vertical-align: middle;
+        }
+
+        .image:hover {
+
+            box-shadow: 50px blue;
+            transform: translateY(4px);
+
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+
+        window.addEventListener('load', (event) => {
+
+            void function $getLines($) {
+                function countLines($element) {
+                    var lines = 0;
+                    var greatestOffset = void 0;
+                    $element.find('character').each(function () {
+                        if (!greatestOffset || this.offsetTop > greatestOffset) {
+                            greatestOffset = this.offsetTop;
+                            ++lines;
+                        }
+                    });
+                    return lines;
+                }
+                $.fn.getLines = function $getLines() {
+                    var lines = 0;
+                    var clean = this;
+                    var dirty = this.clone();
+                    (function wrapCharacters(fragment) {
+                        var parent = fragment;
+                        $(fragment).contents().each(function () {
+                            if (this.nodeType === Node.ELEMENT_NODE) {
+                                wrapCharacters(this);
+                            }
+                            else if (this.nodeType === Node.TEXT_NODE) {
+                                void function replaceNode(text) {
+                                    var characters = document.createDocumentFragment();
+                                    text.nodeValue.replace(/[\s\S]/gm, function wrapCharacter(character) {
+                                        characters.appendChild($('<character>' + character + '</>')[0]);
+                                    });
+                                    parent.replaceChild(characters, text);
+                                }(this);
+                            }
+                        });
+                    }(dirty[0]));
+                    clean.replaceWith(dirty);
+                    lines = countLines(dirty);
+                    dirty.replaceWith(clean);
+                    return lines;
+                };
+            }(jQuery);
+            $('span').each(function () {
+                console.log($(this).getLines());
+                if ($(this).getLines() == 1) {
+                    // var parentTag = $( this ).parent().get( 0 ).tagName;
+                    // console.log(parentTag)
+                    $(this).prev().css("float", "none")
+                }
+            })
+
+
+
+
+            const { title } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+            document.getElementById("heading").innerHTML = title
+        })
+        function back() {
+            window.parent.postMessage(
+                JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: "@go-back"
+                }),
+                "*"
+            );
+        }
+
+        function nintendoe() {
+            console.log("Redeem Mobile Legends Item Codes")
+            window.parent.postMessage(
+                JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: "Nintendo eShop Card Code redemption"
+                }),
+                "*"
+            );
+
+        }
+
+
+
+        function black() {
+            console.log("Redeem Garena Shell Vouchers Call of Duty")
+            window.parent.postMessage(
+                JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: "Penebusan Kod Baucar Black Desert SEA"
+                }),
+                "*"
+            );
+
+        }
+
+        function cod() {
+            window.parent.postMessage(
+                JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: "Penebusan Garena Shell Call of duty mobile"
+                }),
+                "*"
+            );
+        }
+        function pubgrp() {
+            window.parent.postMessage(
+                JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: "Di manakah RP saya ditinjukkan selepas pembelian"
+                }),
+                "*"
+            );
+        }
+        function pubg() {
+            window.parent.postMessage(
+                JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: "Penebusan Kod Baucer pubg"
+                }),
+                "*"
+            );
+        }
+        function epic() {
+            window.parent.postMessage(
+                JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: "Penebusan Kod produk Epic games"
+                }),
+                "*"
+            );
+        }
+
+        function ragnarok() {
+            window.parent.postMessage(
+                JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: "Bolehkah saya mendapat kedua-dua bonus untuk pembelian saya"
+                }),
+                "*"
+            );
+        }
+
+        function xbox() {
+            window.parent.postMessage(
+                JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: "penebusan kod baucar kad xbox gift"
+                }),
+                "*"
+            );
+        }
+
+
+        function badlanders() {
+            console.log("Cara Redeem Kode Voucher Tinder")
+            window.parent.postMessage(
+                JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: "Where Can I Find My Badlanders ID"
+                }),
+                "*"
+            );
+        }
+        function shark() {
+            console.log("Cara Redeem Kode Voucher Tinder")
+            window.parent.postMessage(
+                JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: "Penebusan Kod Shark Cash Cards"
+                }),
+                "*"
+            );
+        }
+
+
+        function steam() {
+            window.parent.postMessage(
+                JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: "Apakah link penebusan baucar untuk kod Steam Wallet"
+                }),
+                "*"
+            );
+        }
+        function epic() {
+            window.parent.postMessage(
+                JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: "Penebusan Kod produk Epic games"
+                }),
+                "*"
+            );
+        }
+
+    </script>
+    <div class="image">
+        <img src="https://cdn.yellowmessenger.com/KseiGAPc8y401621566579976.jpeg" alt=""
+            style="float: right;width:25px;height:25px;max-width: 40px;max-height: 40px;margin-right: 4px;"
+            onclick="back()">
+    </div>
+    </br>
+
+    <h5 id="heading" style="font-weight:bold"> Please choose the User ID Guide below. </h5>
+
+
+
+    
+    <button type="button" onclick="nintendoe()" class="right primary-btn col-xs-11 text-left">
+        <img src="https://cdn.yellowmessenger.com/xQzOYnHq1gwg1621258467333.png" alt="Place Holder" /> <span> Nintendo eShop
+           </span>
+
+    </button>
+
+    <button type="button" onclick="xbox()" class="right primary-btn col-xs-11 text-left">
+        <img src="https://cdn.yellowmessenger.com/gzQzUptDw2tC1621255146766.png" alt="Place Holder" /> <span> Xbox Gift card
+        </span>
+
+    </button>
+    <button type="button" onclick="cod()" class="right primary-btn col-xs-11 text-left">
+        <img src="https://cdn.yellowmessenger.com/JHGnMiKevRfQ1621264012663.png" alt="Place Holder" /> <span> Call Of Duty
+        </span>
+
+    </button>
+    <button type="button" onclick="badlanders()" class="right primary-btn col-xs-11 text-left">
+        <img src="https://cdn.yellowmessenger.com/toKGTcoEDUUk1632123705049.jpg" alt="Place Holder" /> <span> Badlanders
+            </span>
+
+    </button>
+    <button type="button" onclick="black()" class="right primary-btn col-xs-11 text-left">
+        <img src="https://cdn.yellowmessenger.com/bEP1Bx02HK4c1621259361863.png" alt="Place Holder" /> <span> Black Desert SEA
+            </span>
+
+    </button>
+    <button type="button" onclick="tinder()" class="right primary-btn col-xs-11 text-left">
+        <img src="https://cdn.yellowmessenger.com/mpTP2ocVvY291621256326863.png" alt="Place Holder" /> <span> Tinder
+        </span>
+
+    </button>
+    <button type="button" onclick="shark()" class="right primary-btn col-xs-11 text-left">
+        <img src="https://cdn.yellowmessenger.com/mUfoy9fEXGZk1637050042199.jpeg" alt="Place Holder" /> <span> Shark Cash Cards
+        </span>
+
+    </button>
+    <button type="button" onclick="steam()" class="right primary-btn col-xs-11 text-left">
+        <img src="https://cdn.yellowmessenger.com/ebAbcs9HBMzC1621257918055.png" alt="Place Holder" /> <span> Steam Wallet
+        </span>
+
+    </button>
+    <button type="button" onclick="epic()" class="right primary-btn col-xs-11 text-left">
+        <img src="https://cdn.yellowmessenger.com/WZ6sckc2RIdn1637050198068.jpeg" alt="Place Holder" /> <span> Epic Games
+        </span>
+
+    </button>
+
+
+    <button type="button" onclick="ragnarok()" class="right primary-btn col-xs-11 text-left">
+        <img src="https://cdn.yellowmessenger.com/0oemsXJxX9s61632124148689.jpg" alt="Place Holder" /> <span> Ragnarok M</span>
+
+    </button>
+    <button type="button" onclick="pubgrp()" class="right primary-btn col-xs-11 text-left">
+        <img src="https://cdn.yellowmessenger.com/MR6Smc9Z0JQi1621259882872.png" alt="Place Holder" /> <span> pubg Royal Pass
+            </span>
+
+    </button>
+    <button type="button" onclick="pubg()" class="right primary-btn col-xs-11 text-left">
+        <img src="https://cdn.yellowmessenger.com/MR6Smc9Z0JQi1621259882872.png" alt="Place Holder" /> <span> PUBG
+        </span>
+
+    </button>
+</body>
+
+</html>
